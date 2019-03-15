@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 
 import Header from "./header"
 import Footer from "./footer"
-import "./styles/reset.css"
 import "./styles/layout.scss"
 
 const Layout = ({ children }) => (
