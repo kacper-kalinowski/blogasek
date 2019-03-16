@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Portal from "../../utils/portal"
 import Icon from "../../utils/icon"
 

@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import ReactDOM from "react-dom"
 
-const portalRoot = document.getElementById("portal")
+const portalRoot =
+  typeof document !== "undefined" && document.getElementById("portal")
 
 const Portal = ({ children }) => {
   const element = document.createElement("div")
