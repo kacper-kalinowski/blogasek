@@ -1,0 +1,16 @@
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  &__close {
+    position: absolute;
+    padding: 0;
+    width: 26px;
+    top: 1rem;
+    right: 1rem;
+  }
+}

@@ -1,10 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
-import Icon from "../../utils/Icon"
+import MobileMenu from "./mobile-menu"
+import Icon from "../../utils/icon"
 
 const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const openMenu = () => setMobileMenuOpen(true)
+  const closeMenu = () => setMobileMenuOpen(false)
+
   return (
     <header className="site-header">
+      {mobileMenuOpen && <MobileMenu closeMenu={closeMenu} />}
       <div>
         <h1>
           <Link to="/">Kacper Kalinowski</Link>
@@ -12,7 +19,7 @@ const Header = () => {
         <p>Trener personalny</p>
       </div>
       <div className="site-header__hamburger">
-        <button>
+        <button onClick={openMenu}>
           <Icon name="hamburger" />
         </button>
       </div>
