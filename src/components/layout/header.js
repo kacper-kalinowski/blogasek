@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import MobileMenu from "./mobile-menu"
 import Icon from "../../utils/icon"
 
-const Header = () => {
+const Header = ({ menu }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const openMenu = () => setMobileMenuOpen(true)
@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className="site-header">
-      {mobileMenuOpen && <MobileMenu closeMenu={closeMenu} />}
+      {mobileMenuOpen && <MobileMenu menu={menu} closeMenu={closeMenu} />}
       <div>
         <h1>
           <Link to="/">Kacper Kalinowski</Link>
