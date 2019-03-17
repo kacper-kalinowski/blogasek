@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import slugify from "../../utils/slugify"
+import { postSlugify } from "../../utils/slugify"
 import Layout from "../../components/layout"
 
 export default function Template({ data }) {
@@ -20,7 +20,7 @@ export default function Template({ data }) {
         {posts.map(post => (
           <article key={post.title}>
             <header>
-              <Link to={slugify(post.title)}>{post.title}</Link>
+              <Link to={postSlugify(post.title)}>{post.title}</Link>
               <p>{post.publicationDate}</p>
             </header>
             <p>{post.description}</p>

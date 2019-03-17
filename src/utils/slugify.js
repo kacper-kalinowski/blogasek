@@ -1,9 +1,9 @@
-import slugify from "slugify"
+const slugify = require("slugify")
 
-const mySlugify = title =>
+const postSlugify = title =>
   `/blog/${slugify(title, {
     remove: /[?]/g,
     lower: true,
   })}`
 
-export default mySlugify
+exports.postSlugify = postSlugify
