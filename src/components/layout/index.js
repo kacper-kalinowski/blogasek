@@ -7,6 +7,10 @@ import "./styles/layout.scss"
 
 const defaultMenu = [
   {
+    label: "Strona główna",
+    link: "/",
+  },
+  {
     label: "Blog",
     link: "/blog",
   },

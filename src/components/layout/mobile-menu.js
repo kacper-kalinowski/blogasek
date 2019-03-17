@@ -10,9 +10,13 @@ const MobileMenu = ({ menu, closeMenu }) => (
         <Icon name="close" />
       </button>
       <nav>
-        {menu.map(menuItem => {
+        {menu.map((menuItem, index) => {
           if (menuItem.link) {
-            return <Link to={menuItem.link}>{menuItem.label}</Link>
+            return (
+              <Link key={index} to={menuItem.link}>
+                {menuItem.label}
+              </Link>
+            )
           }
         })}
       </nav>
