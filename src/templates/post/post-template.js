@@ -6,7 +6,6 @@ export default function Template({ data }) {
   const {
     title,
     publicationDate,
-    description,
     childContentfulPostPostRichTextNode,
   } = data.contentfulPost
   const { html } = childContentfulPostPostRichTextNode.childContentfulRichText
@@ -26,8 +25,7 @@ export const pageQuery = graphql`
   query POST($title: String!) {
     contentfulPost(title: { eq: $title }) {
       title
-      description
-      publicationDate
+      publicationDate(formatString: "D MMMM YYYY", locale: "pl")
       childContentfulPostPostRichTextNode {
         childContentfulRichText {
           html

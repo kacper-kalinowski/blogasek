@@ -38,7 +38,7 @@ export const pageQuery = graphql`
         node {
           title
           description
-          publicationDate
+          publicationDate(formatString: "D MMMM YYYY", locale: "pl")
           childContentfulPostPostRichTextNode {
             childContentfulRichText {
               html
