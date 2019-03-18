@@ -32,8 +32,12 @@ export default function Template({ data }) {
 }
 
 export const pageQuery = graphql`
-  query POSTS_QUERY {
-    allContentfulPost(sort: { fields: publicationDate, order: DESC }) {
+  query POSTS_QUERY($skip: Int!, $limit: Int!) {
+    allContentfulPost(
+      sort: { fields: publicationDate, order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
           title
