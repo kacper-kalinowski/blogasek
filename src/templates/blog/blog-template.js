@@ -3,7 +3,14 @@ import { Link, graphql } from "gatsby"
 import { postSlugify } from "../../utils/slugify"
 import Layout from "../../components/layout"
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext }) {
+  const { currentPage, pages } = pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === pages
+  const prevPageLink =
+    currentPage - 1 === 1 ? `/blog` : `/blog/${currentPage - 1}`
+  const nextPageLink = `/blog/${currentPage + 1}`
+
   const posts = data.allContentfulPost.edges.map(({ node }) => {
     const { title, description, publicationDate } = node
 
@@ -16,17 +23,28 @@ export default function Template({ data }) {
 
   return (
     <Layout>
-      <div>
-        {posts.map(post => (
-          <article key={post.title}>
-            <header>
-              <Link to={postSlugify(post.title)}>{post.title}</Link>
-              <p>{post.publicationDate}</p>
-            </header>
-            <p>{post.description}</p>
-          </article>
-        ))}
-      </div>
+      {posts.map(post => (
+        <article key={post.title}>
+          <header>
+            <Link to={postSlugify(post.title)}>{post.title}</Link>
+            <p>{post.publicationDate}</p>
+          </header>
+          <p>{post.description}</p>
+        </article>
+      ))}
+      <nav>
+        {!isFirst && (
+          <Link to={prevPageLink} rel="prev">
+            ← Previous page
+          </Link>
+        )}
+        <span>{`Page ${currentPage} of ${pages}`}</span>
+        {!isLast && (
+          <Link to={nextPageLink} rel="next">
+            Next page →
+          </Link>
+        )}
+      </nav>
     </Layout>
   )
 }
