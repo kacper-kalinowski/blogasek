@@ -47,21 +47,30 @@ exports.createPages = ({ actions, graphql }) => {
     const journalEntries = result.data.allContentfulJournal.edges
 
     const { postsPerPage } = config
-    const pages = Math.ceil(posts.length / postsPerPage)
+    const postPages = Math.ceil(posts.length / postsPerPage)
+    const journalPages = Math.ceil(journalEntries.length / postsPerPage)
 
-    createPage({
-      path: `/dziennik`,
-      component: journalTemplate,
+    Array.from({ length: journalPages }).forEach((_, index) => {
+      createPage({
+        path: index === 0 ? `/dziennik` : `/dziennik/${index + 1}`,
+        component: journalTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          pages: journalPages,
+          currentPage: index + 1,
+        },
+      })
     })
 
-    Array.from({ length: pages }).forEach((_, index) => {
+    Array.from({ length: postPages }).forEach((_, index) => {
       createPage({
         path: index === 0 ? `/blog` : `/blog/${index + 1}`,
         component: blogTemplate,
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,
-          pages,
+          pages: postPages,
           currentPage: index + 1,
         },
       })
