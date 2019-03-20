@@ -7,7 +7,8 @@
 // You can delete this file if you're not using it
 
 const path = require("path")
-const { postSlugify } = require("./src/utils/slugify")
+const { postSlugify, journalSlugify } = require("./src/utils/slugify")
+const { BLOG_ENTRY, JOURNAL_ENTRY } = require("./src/utils/consts")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -76,12 +77,24 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
+    journalEntries.forEach(({ node }) => {
+      createPage({
+        path: journalSlugify(node.title),
+        component: postTemplate,
+        context: {
+          title: node.title,
+          type: JOURNAL_ENTRY,
+        },
+      })
+    })
+
     posts.forEach(({ node }) => {
       createPage({
         path: postSlugify(node.title),
         component: postTemplate,
         context: {
           title: node.title,
+          type: BLOG_ENTRY,
         },
       })
     })
