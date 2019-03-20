@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { postSlugify } from "../../utils/slugify"
+import { journalSlugify } from "../../utils/slugify"
 import Layout from "../../components/layout"
 
 export default function Template({ data, pageContext }) {
@@ -25,7 +25,7 @@ export default function Template({ data, pageContext }) {
       {entries.map(entry => (
         <article key={entry.title}>
           <header>
-            <Link to={postSlugify(entry.title)}>{entry.title}</Link>
+            <Link to={journalSlugify(entry.title)}>{entry.title}</Link>
             <p>{entry.publicationDate}</p>
           </header>
         </article>

@@ -6,4 +6,11 @@ const postSlugify = title =>
     lower: true,
   })}`
 
+const journalSlugify = title =>
+  `/dziennik/${slugify(title, {
+    remove: /[?]/g,
+    lower: true,
+  })}`
+
 exports.postSlugify = postSlugify
+exports.journalSlugify = journalSlugify
