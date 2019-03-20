@@ -13,6 +13,9 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
   const blogTemplate = path.resolve(`src/templates/blog/blog-template.js`)
   const postTemplate = path.resolve(`src/templates/post/post-template.js`)
+  const journalTemplate = path.resolve(
+    `src/templates/journal/journal-template.js`
+  )
 
   return graphql(`
     {
@@ -20,6 +23,13 @@ exports.createPages = ({ actions, graphql }) => {
         postsPerPage
       }
       allContentfulPost {
+        edges {
+          node {
+            title
+          }
+        }
+      }
+      allContentfulJournal {
         edges {
           node {
             title
@@ -34,9 +44,15 @@ exports.createPages = ({ actions, graphql }) => {
 
     const config = result.data.contentfulConfig
     const posts = result.data.allContentfulPost.edges
+    const journalEntries = result.data.allContentfulJournal.edges
 
     const { postsPerPage } = config
     const pages = Math.ceil(posts.length / postsPerPage)
+
+    createPage({
+      path: `/dziennik`,
+      component: journalTemplate,
+    })
 
     Array.from({ length: pages }).forEach((_, index) => {
       createPage({
