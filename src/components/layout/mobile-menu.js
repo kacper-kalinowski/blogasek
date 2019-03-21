@@ -13,7 +13,7 @@ const MobileMenu = ({ menu, closeMenu }) => (
         {menu.map((menuItem, index) => {
           if (menuItem.link) {
             return (
-              <Link key={index} to={menuItem.link}>
+              <Link key={index} to={menuItem.link} onClick={closeMenu}>
                 {menuItem.label}
               </Link>
             )
