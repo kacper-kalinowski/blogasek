@@ -9,7 +9,6 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -18,12 +17,6 @@ module.exports = {
       },
     },
     `@contentful/gatsby-transformer-contentful-richtext`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
