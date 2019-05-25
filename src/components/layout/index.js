@@ -1,11 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
-import './tailwind.css'
+import Header from "./header"
+import "./tailwind.css"
 
-const Layout = ({ menu, children }) => (
-  <div className="site">
-    <p className='text-6xl'>Hello world</p>
-  </div>
+const Layout = ({ children }) => (
+  <>
+    <Header />
+    <main>{children}</main>
+  </>
 )
 
 Layout.propTypes = {
