@@ -3,7 +3,11 @@ module.exports = {
     fontFamily: {
       oswald: ["Oswald", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        gold: "#BDAB6F",
+      },
+    },
   },
   variants: {},
   plugins: [],

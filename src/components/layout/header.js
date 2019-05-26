@@ -1,25 +1,24 @@
 import React from "react"
 import { Link } from "gatsby"
+import CTA from "../common/cta"
 
 const Header = () => (
-  <header className='flex items-baseline p-6 lg:px-20 xl:px-32'>
-    <Link to="/">
-      <h1 className="text-2xl">Kacper Kalinowski</h1>
-      <p className="font-light">Trener Personalny</p>
+  <header className="absolute z-50 w-screen flex items-baseline p-6 lg:px-20 xl:px-32 text-white">
+    <Link className="logo" to="/">
+      <h1 className="logo__title">Kacper Kalinowski</h1>
+      <p className="logo__subtitle">Trener Personalny</p>
     </Link>
-    <nav className='flex flex-grow justify-end items-start'>
-      <button className='hidden text-lg mr-3 lg:mr-6 xl:mr-12'>
+    <nav className="flex flex-grow justify-end items-center">
+      <button className="hidden sm:block text-lg lg:text-xl mr-3 md:mr-6 lg:mr-12">
         Kim jestem
       </button>
-      <button className='hidden text-lg mr-3 lg:mr-6 xl:mr-12'>
+      <button className="hidden sm:block text-lg lg:text-lx mr-3 md:mr-6 lg:mr-12">
         Jak mogę ci pomóc
       </button>
-      <button className='hidden text-lg mr-3 lg:mr-6 xl:mr-12'>
+      <button className="hidden sm:block text-lg lg:text-xl mr-3 md:mr-6 lg:mr-12">
         Co o mnie mówią
       </button>
-      <button className='text-lg'>
-        Blog
-      </button>
+      <CTA>Blog</CTA>
     </nav>
   </header>
 )

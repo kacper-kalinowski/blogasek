@@ -1,5 +1,63 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Oswald:200,300,400&display=swap");
 
 @tailwind base;
 @tailwind components;
+
+/*
+  CTA
+*/
+
+.cta {
+  @apply relative font-light border-gold border-2 rounded-sm py-2 px-4 text-white text-xl z-20 overflow-hidden;
+  transition: color 0.3s;
+}
+
+.cta:hover {
+  @apply text-gray-800;
+}
+
+.cta::before {
+  content: "";
+  z-index: -1;
+  @apply absolute inset-0 bg-gold;
+  transform: translateX(-101%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cta:hover::before {
+  transform: translateX(0);
+}
+
+/*
+  LOGO
+*/
+
+.logo {
+  @apply overflow-hidden;
+}
+
+.logo:hover .logo__subtitle {
+  transform: translateX(0);
+}
+
+.logo__title {
+  @apply text-2xl;
+}
+
+.logo__subtitle {
+  @apply font-light text-lg;
+  transition: transform 0.2s ease-out;
+  transform: translateX(-100%);
+}
+
+@screen lg {
+  .logo__title {
+    @apply text-3xl;
+  }
+
+  .logo__subtitle {
+    @apply text-xl;
+  }
+}
+
 @tailwind utilities;
